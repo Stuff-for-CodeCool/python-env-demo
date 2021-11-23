@@ -19,5 +19,16 @@ def index():
     )
 
 
+@app.route("/users/<id>")
+def user_by_id(id):
+
+    users = queries.get_user_by_id(id)
+
+    return render_template(
+        "main.html",
+        users=users,
+    )
+
+
 if __name__ == "__main__":
     app.run(debug=True)
