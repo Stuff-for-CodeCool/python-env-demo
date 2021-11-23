@@ -1,6 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 from dotenv import load_dotenv
+
+import queries
 
 app = Flask(__name__)
 load_dotenv()
@@ -9,14 +11,12 @@ load_dotenv()
 @app.route("/")
 def index():
 
-    user = os.environ.get("UTILIZAATOR")
-    parola = os.environ.get("PAROLA")
+    users = queries.get_all_users()
 
-    return f"""
-    <p>Date de conectare:</p>
-    <p>User: {user}</p>
-    <p>Parola: {parola}</p>
-    """
+    return render_template(
+        "main.html",
+        users=users,
+    )
 
 
 if __name__ == "__main__":

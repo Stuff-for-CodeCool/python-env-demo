@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h1>Lista de utilizatori:</h1>
+
+<ul>
+    {% for user in users %}
+        <li>User <strong>{{user.name}}</strong> cu parola <strong>{{ user.password }}</strong>
+    {% endfor %}
+</ul>
+
+{% endblock %}
